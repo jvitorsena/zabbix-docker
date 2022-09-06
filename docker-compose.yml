@@ -14,16 +14,16 @@ services:
       - --character-set-server=utf8
       - --collation-server=utf8_bin
       - --default-authentication-plugin=mysql_native_password
-    volumes:
-      - ./database:/var/lib
-      - ./zabbix-data/alertscripts:/usr/lib/zabbix/alertscripts
-      - ./zabbix-data/externalscripts:/usr/lib/zabbix/externalscripts
-      - ./zabbix-data/export:/var/lib/zabbix/export
-      - ./zabbix-data/modules:/var/lib/zabbix/modules
-      - ./zabbix-data/enc:/var/lib/zabbix/enc
-      - ./zabbix-data/ssh_keys:/var/lib/zabbix/ssh_keys
-      - ./zabbix-data/mibs:/var/lib/zabbix/mibs
-      - ./zabbix-data/snmptraps:/var/lib/zabbix/snmptraps
+    # volumes:
+    #   - ./database:/var/lib
+    #   - ./zabbix-data/alertscripts:/usr/lib/zabbix/alertscripts
+    #   - ./zabbix-data/externalscripts:/usr/lib/zabbix/externalscripts
+    #   - ./zabbix-data/export:/var/lib/zabbix/export
+    #   - ./zabbix-data/modules:/var/lib/zabbix/modules
+    #   - ./zabbix-data/enc:/var/lib/zabbix/enc
+    #   - ./zabbix-data/ssh_keys:/var/lib/zabbix/ssh_keys
+    #   - ./zabbix-data/mibs:/var/lib/zabbix/mibs
+    #   - ./zabbix-data/snmptraps:/var/lib/zabbix/snmptraps
     ports:
       - "3306:3306"
     restart: 'on-failure'    
@@ -88,8 +88,8 @@ services:
       - '3000:3000'
     environment:
       - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
-    volumes:
-      - ./grafana-data:/var/lib/grafana
+    # volumes:
+    #   - ./grafana-data:/var/lib/grafana
     depends_on:
       - mysql
       - zabbix-server
@@ -103,8 +103,8 @@ services:
       - zabbix-server
     restart: always
     privileged: true
-    volumes:
-      - /var/run:/var/run
+    # volumes:
+    #   - /var/run:/var/run
     ports:
       - '10050:10050'
     depends_on:
